@@ -6,7 +6,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(({command}) => {
   return {
-    base: command === 'build' ? './' : '/',
+    base: command === 'build' ? '/webproject1/' : '/',
     plugins: [
       react(),
       tailwindcss(),
