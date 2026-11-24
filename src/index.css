@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+@theme {
+  --font-pixel: "Silkscreen", monospace;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+  --color-retroBg: #F9ECEC;
+  --color-retroBorder: #231F20;
+  --color-retroBlue: #2B6285;
+  --color-retroPink: #E5989B;
+  --color-retroPinkDark: #9E3348;
+  --color-retroTeal: #2A9D8F;
+  --color-retroSage: #84A59D;
+  --color-retroLilac: #B8B8FF;
+  --color-retroCream: #FDF8F2;
+  --color-keyDark: #363F4A;
+  --color-keyLight: #4F5B69;
+  --color-keyShadow: #1E232A;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  :focus-visible {
+    outline: 2.5px solid #D64527;
+    outline-offset: 2px;
+  }
+}
+
+/* Custom Retro Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #F9ECEC;
+  border-left: 2px solid #231F20;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5989B;
+  border: 2px solid #231F20;
+}
+
+/* Retro Browser Hard Shadow */
+.retro-window {
+  border: 2.5px solid #231F20;
+  box-shadow: 6px 6px 0px #231F20;
+}
+.retro-window-colored-shadow-blue {
+  border: 2.5px solid #231F20;
+  box-shadow: 7px 7px 0px #D64527;
+}
+.retro-window-colored-shadow-pink {
+  border: 2.5px solid #231F20;
+  box-shadow: 7px 7px 0px #8B1E3F;
+}
+.retro-window-colored-shadow-teal {
+  border: 2.5px solid #231F20;
+  box-shadow: 7px 7px 0px #F4A261;
+}
+.retro-window-colored-shadow-sage {
+  border: 2.5px solid #231F20;
+  box-shadow: 7px 7px 0px #B56576;
+}
+
+/* Transparency Checkerboard Pattern */
+.checkerboard {
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(45deg, #e5e7eb 25%, transparent 25%),
+    linear-gradient(-45deg, #e5e7eb 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e5e7eb 75%),
+    linear-gradient(-45deg, transparent 75%, #e5e7eb 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+}
+
+/* Interactive Pixel Keycap Style */
+.pixel-keycap {
+  background-color: #363F4A;
+  color: #FFFFFF;
+  border: 2px solid #1E232A;
+  border-top-color: #5C6B7C;
+  border-left-color: #5C6B7C;
+  box-shadow: 0 4px 0 #1E232A;
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.08s ease;
+  cursor: pointer;
+  user-select: none;
+}
+.pixel-keycap:hover {
+  background-color: #434E5C;
+  transform: translateY(-1px);
+}
+.pixel-keycap:active,
+.pixel-keycap.active-key {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #1E232A;
+  background-color: #217A70;
+  border-top-color: #1E232A;
+}
+
+/* Non-interactive Static Keycap Badge (no dead-click affordance) */
+.pixel-badge {
+  background-color: #252B33;
+  color: #FFFFFF;
+  border: 1.5px solid #1E232A;
+  border-top-color: #5C6B7C;
+  border-left-color: #5C6B7C;
+  box-shadow: 0 2px 0 #1E232A;
+  user-select: none;
+}
+
+/* Vintage Ticket Perforation & Horizontal Side Notches */
+.vintage-ticket {
+  position: relative;
+  border: 2px solid #231F20;
+  background-image: radial-gradient(rgba(35, 31, 32, 0.06) 1px, transparent 0);
+  background-size: 10px 10px;
+}
+.ticket-stub {
+  position: relative;
+  border-top: 2px dashed #231F20;
+}
+.ticket-stub::before,
+.ticket-stub::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: #F9ECEC;
+  border: 2px solid #231F20;
+  border-radius: 9999px;
+  top: -9px;
+  z-index: 10;
+}
+.ticket-stub::before {
+  left: -9px;
+}
+.ticket-stub::after {
+  right: -9px;
+}
+
+/* Barcode CSS Pattern */
+.barcode-strip {
+  background: repeating-linear-gradient(
+    90deg,
+    #231F20,
+    #231F20 2px,
+    transparent 2px,
+    transparent 4px,
+    #231F20 4px,
+    #231F20 5px,
+    transparent 5px,
+    transparent 8px,
+    #231F20 8px,
+    #231F20 11px,
+    transparent 11px,
+    transparent 13px
+  );
+}
+
+/* Segmented Bar */
+.loading-segments {
+  background: repeating-linear-gradient(
+    90deg,
+    #2A9D8F 0px,
+    #2A9D8F 6px,
+    #231F20 6px,
+    #231F20 8px
+  );
+}
+
+/* Tabular figures for accounting metrics */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Print / Save PDF Styling for Recruiters */
+@media print {
+  header,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #FFFFFF !important;
+  }
+  .retro-window,
+  .retro-window-colored-shadow-blue,
+  .retro-window-colored-shadow-pink,
+  .retro-window-colored-shadow-teal,
+  .retro-window-colored-shadow-sage,
+  .vintage-ticket {
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+}
